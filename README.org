@@ -1,0 +1,24 @@
+* swift-importc-test
+
+This demo package imports cmark in a swift package and then makes a call. It is
+based on a [[https://oleb.net/blog/2017/12/importing-c-library-into-swift/][tutorial on Ole Begemman's website]].
+
+** Running
+
+You can run debug or release mode with the [[./Makefile][Makefile]], check it out. An example:
+
+#+BEGIN_SRC sh
+make debug && make run-debug
+#+END_SRC
+
+** Caveats
+Your library should be installed so that "pkg-config" can find it.
+
+** Motivation
+- I had issues with the aforementioned tutorial. The compiler was complaining
+  about system modules being deprecated and that I should use a system library
+  instead. I couldn't find a solution in my time allocated for it
+- I looked instead on [[https://github.com/broadwaylamb/OpenCombine][OpenCombine]], which has some C code in its repo and
+  eventually came up with this one
+- pkg-config is called on the Makefile, as I couldn't figure out how to add it
+  on [[./Package.swift][Package.swift]] directly
